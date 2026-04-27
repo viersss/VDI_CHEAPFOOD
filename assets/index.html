@@ -9,10 +9,26 @@
 </head>
 
 <body>
+  <svg width="0" height="0" style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+    <defs>
+      <linearGradient id="grad-chili" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ff9173" />
+        <stop offset="100%" stop-color="var(--chili)" />
+      </linearGradient>
+      <linearGradient id="grad-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ffdc75" />
+        <stop offset="100%" stop-color="var(--gold)" />
+      </linearGradient>
+      <linearGradient id="grad-teal" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#7dede0" />
+        <stop offset="100%" stop-color="var(--teal)" />
+      </linearGradient>
+    </defs>
+  </svg>
   <div id="progress"></div>
   <nav class="nav">
     <div class="brand">Hidden Cost · Pangan Indonesia 2025</div>
-    <div class="nav-links" id="navDots"></div>
+    <div class="nav-links" id="navDots" style="display: none;"></div>
   </nav>
 
   <section class="hero" id="hero" data-title="Hero">
@@ -51,7 +67,6 @@
           <div class="meta-label">komoditas utama</div>
         </div>
       </div>
-      <div class="scroll-cue reveal">Gulir untuk membaca<div class="scroll-arrow"></div>
       </div>
     </div>
   </section>
@@ -95,8 +110,8 @@
       <h2>Lokasi adalah bagian dari <em>harga</em></h2>
     </div>
 
-    <div class="panel reveal panel--map" style="margin: 0 auto 40px; max-width: 100%; width: 100%;">
-      <div class="panel-title">
+    <div class="reveal" style="margin: 0 auto 40px; max-width: 95%; width: 100%; display: flex; flex-direction: column; gap: 16px;">
+      <div class="panel-title" style="margin-bottom: 0;">
         <span>Peta choropleth rata-rata harga provinsi</span>
         <div class="controls">
           <select id="mapCommodity"></select>
@@ -104,9 +119,9 @@
           <button id="metricUSD" class="metric-btn" data-metric="usd">USD</button>
         </div>
       </div>
-      <div class="map-wrap map-wrap--fullbleed" style="width: 100%;">
+      <div class="map-wrap map-wrap--fullbleed" style="width: 100%; background: transparent !important; box-shadow: none !important;">
         <svg id="mapSvg" viewBox="0 0 1000 480" preserveAspectRatio="xMidYMid meet" role="img"
-          aria-label="Peta harga pangan Indonesia" style="width: 100%; height: auto; max-height: 75vh;"></svg>
+          aria-label="Peta harga pangan Indonesia" style="width: 100%; height: auto; max-height: 75vh; background: transparent !important;"></svg>
       </div>
       <div class="legend-bar-wrap" id="mapLegend" style="max-width: 800px; margin: 16px auto 0;"></div>
       <div class="chart-note" style="text-align: center; margin-top: 16px;">Catatan: warna lebih panas menunjukkan harga rata-rata lebih tinggi. Angka mengikuti filter komoditas dan satuan yang dipilih.</div>
@@ -293,7 +308,6 @@
       </div>
       <div class="reveal" style="display: flex; flex-direction: column; gap: 24px; width: 100%;">
         <div class="panel-title" style="margin-bottom: 0;">
-          <span>Explorer terpadu</span>
           <div class="controls">
             <select id="exploreCommodity"></select>
             <button id="exploreIDR" class="explore-metric active" data-metric="price">IDR</button>

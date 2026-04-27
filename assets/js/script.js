@@ -191,7 +191,7 @@ function drawCommodityBars() {
     const d = rows[i], y = top + i * rowH;
     addText(svg, shortName(d.CommodityLabel), left - 12, y + 24, { 'text-anchor': 'end', 'class': 'svg-label', 'font-size': '13', 'font-weight': '700', 'fill': '#3c2b1d' });
     addRect(svg, left, y + 6, W - left - right, 30, { rx: 8, class: 'chartbar-bg' });
-    const bar = addRect(svg, left, y + 6, Math.max(2, x(d[metric]) - left), 30, { rx: 8, fill: i < 2 ? 'var(--chili)' : i < 5 ? 'var(--gold)' : 'var(--teal)' });
+    const bar = addRect(svg, left, y + 6, Math.max(2, x(d[metric]) - left), 30, { rx: 8, fill: i < 2 ? 'url(#grad-chili)' : i < 5 ? 'url(#grad-gold)' : 'url(#grad-teal)' });
     bar.addEventListener('mousemove', e => tooltip(`<b>${safe(d.CommodityLabel)}</b><small>${safe(d.CategoryLabel)}</small><div style="font-family:var(--mono);color:var(--gold);margin-top:6px">${fmt(d[metric])}</div>`, e.clientX, e.clientY));
     bar.addEventListener('mouseleave', hideTooltip);
     addText(svg, fmt(d[metric]), x(d[metric]) + 10, y + 26, { 'class': 'svg-label', 'font-size': '12', 'font-weight': '800', 'fill': '#5a3e2b' });
@@ -244,7 +244,7 @@ function drawDonut() {
 }
 
 function drawProvinceBars(target = '#provinceBars', commodity = null, topOnly = true, m = metric) {
-  const svg = clearSvg(target), W = 780, H = 520, left = 175, right = 80, top = 40, rowH = 40;
+  const svg = clearSvg(target), W = 780, H = 520, left = 175, right = 80, top = 40, rowH = 64;
   let rows = commodity && commodity !== '__all__' ? DATA.provinceCommodity[commodity].slice() : DATA.provinceAvg.slice();
   rows.sort((a, b) => b[m] - a[m]); if (topOnly) rows = rows.slice(0, 10);
   const dataMax = Math.max(...rows.map(d => d[m]));
@@ -262,7 +262,7 @@ function drawProvinceBars(target = '#provinceBars', commodity = null, topOnly = 
     const xx = x(v);
     addLine(svg, xx, top - 8, xx, top + rows.length * rowH + 4, { stroke: 'rgba(126,82,33,.10)', 'stroke-width': 1, 'stroke-dasharray': '3,3' });
     const label = isIDR ? 'Rp' + (v / 1000).toFixed(0) + 'rb' : '$' + v.toFixed(1);
-    addText(svg, label, xx, top - 14, { 'text-anchor': 'middle', 'font-family': 'var(--mono)', 'font-size': '10', 'fill': '#9a8673', 'font-weight': '600' });
+    addText(svg, label, xx, top - 14, { 'text-anchor': 'middle', 'font-family': 'var(--mono)', 'font-size': '15', 'fill': '#9a8673', 'font-weight': '600' });
   }
   // Determine color thresholds based on data
   const t1 = rows[Math.min(2, rows.length - 1)][m]; // top 3 → chili
@@ -270,14 +270,14 @@ function drawProvinceBars(target = '#provinceBars', commodity = null, topOnly = 
   // Draw bars
   rows.forEach((d, i) => {
     const y = top + i * rowH;
-    addText(svg, d.ProvLabel, left - 10, y + 24, { 'text-anchor': 'end', 'font-family': 'var(--body, system-ui)', 'font-size': '12', 'font-weight': '700', 'fill': '#3c2b1d' });
-    addRect(svg, left, y + 7, W - left - right, 25, { rx: 6, class: 'chartbar-bg' });
+    addText(svg, d.ProvLabel, left - 10, y + 26, { 'text-anchor': 'end', 'font-family': 'var(--body, system-ui)', 'font-size': '18', 'font-weight': '700', 'fill': '#3c2b1d' });
+    addRect(svg, left, y + 3, W - left - right, 42, { rx: 8, class: 'chartbar-bg' });
     const barW = Math.max(2, x(d[m]) - left);
-    const barColor = i < 3 ? 'var(--chili)' : i < 6 ? 'var(--gold)' : 'var(--teal)';
-    const rect = addRect(svg, left, y + 7, barW, 25, { rx: 6, fill: barColor });
+    const barColor = i < 3 ? 'url(#grad-chili)' : i < 6 ? 'url(#grad-gold)' : 'url(#grad-teal)';
+    const rect = addRect(svg, left, y + 3, barW, 42, { rx: 8, fill: barColor });
     rect.addEventListener('mousemove', e => tooltip(`<b>${safe(d.ProvLabel)}</b><small>${commodity && commodity !== '__all__' ? safe(shortName(commodity)) : 'Semua komoditas'}</small><div style="font-family:var(--mono);color:var(--gold);margin-top:6px">${fmtM(d[m], m)}</div><small>${d.n} observasi</small>`, e.clientX, e.clientY));
     rect.addEventListener('mouseleave', hideTooltip);
-    addText(svg, fmtM(d[m], m), x(d[m]) + 8, y + 24, { 'font-family': 'var(--mono)', 'font-size': '12', 'font-weight': '800', 'fill': '#3c2b1d' });
+    addText(svg, fmtM(d[m], m), x(d[m]) + 8, y + 28, { 'font-family': 'var(--mono)', 'font-size': '16', 'font-weight': '800', 'fill': '#3c2b1d' });
   });
   // Update color threshold note
   if (target === '#provinceBars') {
@@ -293,38 +293,38 @@ function drawProvinceBars(target = '#provinceBars', commodity = null, topOnly = 
 }
 
 function drawDumbbell() {
-  const svg = clearSvg('#dumbbellChart'), W = 840, H = 520, left = 195, right = 145, top = 38, rowH = 52;
+  const svg = clearSvg('#dumbbellChart'), W = 900, H = 520, left = 220, right = 160, top = 40, rowH = 90;
   let rows = DATA.ranges.slice();
   if (gapSelected !== '__all__') rows = rows.filter(d => d.commodity === gapSelected);
   const key = metric === 'price' ? 'Price' : 'Usd';
   const minAll = Math.min(...rows.map(d => d['min' + key]));
   const maxAll = Math.max(...rows.map(d => d['max' + key]));
   const x = scaleLinear([minAll * .9, maxAll * 1.05], [left, W - right]);
-  svg.setAttribute('viewBox', `0 0 ${W} ${Math.max(160, top + rows.length * rowH + 48)}`);
+  svg.setAttribute('viewBox', `0 0 ${W} ${Math.max(200, top + rows.length * rowH + 60)}`);
   for (let i = 0; i < 5; i++) {
     const xx = left + (W - left - right) * i / 4;
-    addLine(svg, xx, top - 18, xx, top + rows.length * rowH, { class: 'tick-line' });
+    addLine(svg, xx, top - 24, xx, top + rows.length * rowH, { class: 'tick-line' });
   }
   rows.forEach((d, i) => {
-    const y = top + i * rowH + 12, min = d['min' + key], max = d['max' + key], avg = d['avg' + key], spread = d['spread' + key];
-    addText(svg, shortName(d.commodity), left - 14, y + 4, { 'text-anchor': 'end', 'class': 'svg-label' });
-    const line = addLine(svg, x(min), y, x(max), y, { stroke: d.ratio >= 1.7 ? 'var(--chili)' : 'var(--gold)', 'stroke-width': 6, 'stroke-linecap': 'round', opacity: .82 });
+    const y = top + i * rowH + 24, min = d['min' + key], max = d['max' + key], avg = d['avg' + key], spread = d['spread' + key];
+    addText(svg, shortName(d.commodity), left - 20, y + 6, { 'text-anchor': 'end', 'class': 'svg-label', 'font-size': '18', 'font-weight': '700' });
+    const line = addLine(svg, x(min), y, x(max), y, { stroke: d.ratio >= 1.7 ? 'var(--chili)' : 'var(--gold)', 'stroke-width': 16, 'stroke-linecap': 'round', opacity: .82 });
     line.addEventListener('mousemove', e => tooltip(`<b>${safe(d.commodity)}</b><small>Rentang ${safe(metricLabel())}</small><div style="font-family:var(--mono);color:var(--gold);margin-top:6px">${fmtM(spread, metric)} · ${d.ratio}×</div>`, e.clientX, e.clientY));
     line.addEventListener('mouseleave', hideTooltip);
-    addCircle(svg, x(min), y, 7, { fill: 'var(--teal)', stroke: 'var(--bg)', 'stroke-width': 2 });
-    addCircle(svg, x(max), y, 7, { fill: 'var(--chili)', stroke: 'var(--bg)', 'stroke-width': 2 });
-    addCircle(svg, x(avg), y, 5, { fill: 'var(--gold)', stroke: 'var(--bg)', 'stroke-width': 2 });
-    addText(svg, d.minProv, x(min), y + 24, { 'text-anchor': 'middle', 'class': 'svg-label', 'font-size': 10 });
-    addText(svg, d.maxProv, x(max), y - 14, { 'text-anchor': 'middle', 'class': 'svg-label', 'font-size': 10 });
-    addText(svg, fmtM(spread, metric), W - 6, y + 4, { 'text-anchor': 'end', 'class': 'svg-label', fill: 'var(--gold)' });
+    addCircle(svg, x(min), y, 14, { fill: 'var(--teal)', stroke: 'var(--bg)', 'stroke-width': 3 });
+    addCircle(svg, x(max), y, 14, { fill: 'var(--chili)', stroke: 'var(--bg)', 'stroke-width': 3 });
+    addCircle(svg, x(avg), y, 8, { fill: 'var(--gold)', stroke: 'var(--bg)', 'stroke-width': 2 });
+    addText(svg, d.minProv, x(min), y + 36, { 'text-anchor': 'middle', 'class': 'svg-label', 'font-size': 14 });
+    addText(svg, d.maxProv, x(max), y - 24, { 'text-anchor': 'middle', 'class': 'svg-label', 'font-size': 14 });
+    addText(svg, fmtM(spread, metric), W - 6, y + 6, { 'text-anchor': 'end', 'class': 'svg-label', fill: 'var(--gold)', 'font-size': 18, 'font-weight': 'bold' });
   });
-  addText(svg, 'termurah', left, 18, { class: 'svg-label', 'text-anchor': 'middle' });
-  addText(svg, 'termahal', W - right, 18, { class: 'svg-label', 'text-anchor': 'middle' });
+  addText(svg, 'termurah', left, 14, { class: 'svg-label', 'text-anchor': 'middle', 'font-size': 16 });
+  addText(svg, 'termahal', W - right, 14, { class: 'svg-label', 'text-anchor': 'middle', 'font-size': 16 });
   updateGapInsight();
 }
 
 function drawLineChart(target = '#lineChart', commodity = '__all__', m = metric) {
-  const svg = clearSvg(target), W = 820, H = 460, left = 58, right = 28, top = 30, bottom = 58;
+  const svg = clearSvg(target), W = 900, H = 540, left = 75, right = 40, top = 40, bottom = 65;
   let series = commodity === '__all__' ? DATA.commodities.map(c => ({ name: c, rows: DATA.monthly[c] })) : [{ name: commodity, rows: DATA.monthly[commodity] }];
   const allVals = series.flatMap(s => s.rows.map(d => d[m]));
   const ymin = Math.min(...allVals), ymax = Math.max(...allVals);
@@ -334,19 +334,19 @@ function drawLineChart(target = '#lineChart', commodity = '__all__', m = metric)
     const val = ymin - yPad + (ymax - ymin + 2 * yPad) * i / 5;
     const yy = y(val);
     addLine(svg, left, yy, W - right, yy, { class: 'tick-line' });
-    addText(svg, fmtM(val, m), left - 8, yy + 4, { 'text-anchor': 'end', 'class': 'svg-label' });
+    addText(svg, fmtM(val, m), left - 12, yy + 5, { 'text-anchor': 'end', 'class': 'svg-label', 'font-size': 16 });
   }
-  DATA.monthLabels.forEach((lab, i) => addText(svg, lab, x(i + 1), H - 22, { 'text-anchor': 'middle', 'class': 'svg-label' }));
+  DATA.monthLabels.forEach((lab, i) => addText(svg, lab, x(i + 1), H - 22, { 'text-anchor': 'middle', 'class': 'svg-label', 'font-size': 16 }));
   series.forEach((s, si) => {
     const color = commodity === '__all__' ? SERIES_COLORS[si % SERIES_COLORS.length] : 'var(--chili)';
     const points = s.rows.map(d => [x(d.month), y(d[m]), d]);
     const dstr = points.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join('');
-    const path = svgEl('path', { d: dstr, fill: 'none', stroke: color, 'stroke-width': commodity === '__all__' && !['Daging sapi kualitas pertama', 'Bawang merah', 'Beras kualitas sedang'].includes(s.name) ? 2 : 3.4, opacity: commodity === '__all__' && !['Daging sapi kualitas pertama', 'Bawang merah', 'Beras kualitas sedang'].includes(s.name) ? .42 : .95, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
+    const path = svgEl('path', { d: dstr, fill: 'none', stroke: color, 'stroke-width': commodity === '__all__' && !['Daging sapi kualitas pertama', 'Bawang merah', 'Beras kualitas sedang'].includes(s.name) ? 3 : 6, opacity: commodity === '__all__' && !['Daging sapi kualitas pertama', 'Bawang merah', 'Beras kualitas sedang'].includes(s.name) ? .42 : .95, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
     path.addEventListener('mousemove', e => tooltip(`<b>${safe(s.name)}</b><small>Tren bulanan 2025</small>`, e.clientX, e.clientY));
     path.addEventListener('mouseleave', hideTooltip);
     svg.appendChild(path);
     points.forEach(p => {
-      const c = addCircle(svg, p[0], p[1], 3.5, { fill: color, opacity: .92 });
+      const c = addCircle(svg, p[0], p[1], 8, { fill: color, opacity: .92 });
       c.addEventListener('mousemove', e => tooltip(`<b>${safe(s.name)}</b><small>${DATA.monthLabels[p[2].month - 1]} 2025</small><div style="font-family:var(--mono);color:var(--gold);margin-top:6px">${fmtM(p[2][m], m)}</div>`, e.clientX, e.clientY));
       c.addEventListener('mouseleave', hideTooltip);
     });
@@ -355,12 +355,12 @@ function drawLineChart(target = '#lineChart', commodity = '__all__', m = metric)
   if (commodity === '__all__') {
     DATA.commodities.forEach((c, i) => {
       if (i > 3) return;
-      const lx = left + i * 165;
-      addCircle(svg, lx, legendY, 5, { fill: SERIES_COLORS[i % SERIES_COLORS.length] });
-      addText(svg, shortName(c), lx + 10, legendY + 4, { class: 'svg-label' });
+      const lx = left + i * 180;
+      addCircle(svg, lx, legendY - 5, 8, { fill: SERIES_COLORS[i % SERIES_COLORS.length] });
+      addText(svg, shortName(c), lx + 16, legendY + 1, { class: 'svg-label', 'font-size': 16, 'font-weight': 'bold' });
     });
   } else {
-    addText(svg, shortName(commodity), left, legendY, { class: 'svg-label', fill: 'var(--gold)' });
+    addText(svg, shortName(commodity), left, legendY, { class: 'svg-label', fill: 'var(--gold)', 'font-size': 18, 'font-weight': 'bold' });
   }
   if (target === '#lineChart') updateTrendInsight();
 }
