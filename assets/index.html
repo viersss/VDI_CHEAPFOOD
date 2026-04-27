@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beban di Piring Kita — Hidden Cost Harga Pangan Indonesia 2025</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <div id="progress"></div>
+  <nav class="nav">
+    <div class="brand">Hidden Cost · Pangan Indonesia 2025</div>
+    <div class="nav-links" id="navDots"></div>
+  </nav>
+
+  <section class="hero" id="hero" data-title="Hero">
+    <img class="food-sticker s-hero-1 sticker-bounce" src="assets/images/food-sticker-01.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-hero-2" src="assets/images/food-sticker-02.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-hero-3 sticker-bounce" src="assets/images/food-sticker-03.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-hero-4 sticker-spin" src="assets/images/food-sticker-04.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-hero-5" src="assets/images/food-sticker-05.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-hero-6" src="assets/images/food-sticker-06.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <div class="hero-inner">
+      <div class="eyebrow reveal">Visual Essay · Scrollytelling Interaktif</div>
+      <h1 class="reveal">Beban di <em>Piring</em> Kita</h1>
+      <p class="lead reveal">Menyingkap ketimpangan harga pangan Indonesia 2025: bukan hanya makanan apa yang dibeli,
+        tetapi di mana ia dibeli, kapan harganya bergerak, dan seberapa jauh rata-rata menyembunyikan jurang harga.</p>
+      <div class="meta-grid reveal">
+        <div class="meta-card">
+          <div class="meta-num">13,011</div>
+          <div class="meta-label">observasi harga</div>
+        </div>
+        <div class="meta-card">
+          <div class="meta-num">34</div>
+          <div class="meta-label">provinsi dalam data</div>
+        </div>
+        <div class="meta-card">
+          <div class="meta-num">218</div>
+          <div class="meta-label">pasar teramati</div>
+        </div>
+        <div class="meta-card">
+          <div class="meta-num">8</div>
+          <div class="meta-label">komoditas utama</div>
+        </div>
+      </div>
+      <div class="scroll-cue reveal">Gulir untuk membaca<div class="scroll-arrow"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="hook" data-title="Hook">
+    <img class="food-sticker s-a" src="assets/images/food-sticker-07.png" alt="" aria-hidden="true" loading="lazy" />
+    <img class="food-sticker s-b sticker-bounce" src="assets/images/food-sticker-08.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-d" src="assets/images/food-sticker-09.png" alt="" aria-hidden="true" loading="lazy" />
+    <div class="story-grid">
+      <div class="copy reveal">
+        <div class="chapter">Bab 1 — Hook</div>
+        <h2>Makanan murah, <em>murah untuk siapa?</em></h2>
+        <p class="bodytext">Rata-rata bisa menenangkan, tapi pengalaman belanja tidak pernah terjadi di rata-rata
+          nasional. Di dataset ini, <strong>Beras kualitas sedang</strong> rata-ratanya sekitar
+          <strong>Rp15.517/kg</strong>, sementara <strong>Daging sapi kualitas pertama</strong> mencapai sekitar
+          <strong>Rp139.842/kg</strong>.
+        </p>
+        <p class="bodytext">Kontras serupa muncul di wilayah: <strong>Papua</strong> menjadi provinsi dengan rata-rata
+          harga tertinggi, sedangkan <strong>Kepulauan Riau</strong> terendah. Jadi pertanyaan awalnya bukan “berapa
+          harga pangan Indonesia?”, tetapi <strong>siapa membayar lebih, di mana, dan untuk makanan apa?</strong></p>
+        <div class="insight">Satu angka harga tidak cukup. Harga pangan perlu dibaca dari komoditas, kategori, wilayah,
+          dan waktu.</div>
+      </div>
+      <div class="panel reveal">
+        <div class="panel-title"><span>Empat angka pembuka</span><span>Rata-rata 2025</span></div>
+        <div class="kpi-grid" id="kpiGrid"></div>
+        <div id="commodityContrast"></div>
+        <div class="dynamic-interpretation" id="kpiInsight"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="map-section" data-title="Peta">
+    <img class="food-sticker s-a" src="assets/images/food-sticker-10.png" alt="" aria-hidden="true" loading="lazy" />
+    <img class="food-sticker s-b sticker-bounce" src="assets/images/food-sticker-11.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-c" src="assets/images/food-sticker-12.png" alt="" aria-hidden="true" loading="lazy" />
+    <div class="story-grid">
+      <div class="copy reveal">
+        <div class="chapter">Bab 2 — Peta Harga</div>
+        <h2>Lokasi adalah bagian dari <em>harga</em></h2>
+        <p class="bodytext">Peta ini memperlihatkan rata-rata harga menurut provinsi. Pilih komoditas untuk melihat
+          bagaimana pola spasial berubah: harga <strong>daging sapi</strong>, <strong>bawang merah</strong>, atau
+          <strong>beras</strong> tidak membentuk beban yang sama di seluruh Indonesia.
+        </p>
+        <p class="bodytext">Hover pada provinsi untuk melihat angka detail. Provinsi pemekaran Papua yang tidak tersedia
+          di data harga akan ditampilkan sebagai wilayah tanpa data.</p>
+        <div class="insight">Pembeli tidak hidup di rata-rata nasional. Mereka membeli pangan di provinsi tertentu, di
+          pasar tertentu, dengan harga lokal.</div>
+      </div>
+      <div class="panel reveal panel--map">
+        <div class="panel-title">
+          <span>Peta choropleth rata-rata harga provinsi</span>
+          <div class="controls">
+            <select id="mapCommodity"></select>
+            <button id="metricIDR" class="metric-btn active" data-metric="price">IDR</button>
+            <button id="metricUSD" class="metric-btn" data-metric="usd">USD</button>
+          </div>
+        </div>
+        <div class="map-wrap map-wrap--fullbleed">
+          <svg id="mapSvg" viewBox="0 0 1000 480" preserveAspectRatio="xMidYMid meet" role="img"
+            aria-label="Peta harga pangan Indonesia"></svg>
+        </div>
+        <div class="legend-bar-wrap" id="mapLegend"></div>
+        <div class="chart-note">Catatan: warna lebih panas menunjukkan harga rata-rata lebih tinggi. Angka mengikuti
+          filter komoditas dan satuan yang dipilih.</div>
+        <div class="map-interpretation" id="mapInsight"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="structure" data-title="Struktur">
+    <img class="food-sticker s-a sticker-bounce" src="assets/images/food-sticker-13.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-b" src="assets/images/food-sticker-14.png" alt="" aria-hidden="true" loading="lazy" />
+    <img class="food-sticker s-d sticker-spin" src="assets/images/food-sticker-15.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-e" src="assets/images/food-sticker-16.png" alt="" aria-hidden="true" loading="lazy" />
+    <div class="story-grid">
+      <div class="copy reveal">
+        <div class="chapter">Bab 3 — Struktur Harga</div>
+        <h2><em>Kenyang</em> lebih murah daripada bergizi</h2>
+        <p class="bodytext">Ketika harga dibaca menurut kategori, pangan pokok berada di lapisan termurah, sedangkan
+          kategori daging, ikan, dan telur berada jauh lebih tinggi. Ini tidak menghitung kandungan gizi langsung,
+          tetapi cukup menunjukkan struktur harga: sumber protein hewani membutuhkan biaya lebih besar daripada serealia
+          dan umbi.</p>
+        <p class="bodytext">Bagian ini menggabungkan dua chart Tableau: donut kategori dan ranking komoditas. Donut
+          memberi gambaran komposisi rata-rata kategori, sementara bar chart memperlihatkan jarak antar komoditas secara
+          lebih presisi.</p>
+        <div class="insight">Kenyang relatif lebih murah, tetapi sumber protein berada pada lapisan harga yang jauh
+          lebih tinggi.</div>
+      </div>
+      <div class="panel reveal">
+        <div class="panel-title"><span>Donut kategori + ranking komoditas</span><span
+            id="structureMetricLabel">IDR/kg</span></div>
+        <div class="dual-grid">
+          <div>
+            <svg id="donutChart" viewBox="0 0 420 440" role="img" aria-label="Donut rata-rata kategori pangan"></svg>
+            <div class="chart-note">Donut memakai rata-rata harga kategori. Nilai tidak dimaksudkan sebagai proporsi
+              pengeluaran rumah tangga.</div>
+            <div class="dynamic-interpretation" id="structureInsight"></div>
+          </div>
+          <div>
+            <svg id="commodityBars" viewBox="0 0 620 440" role="img" aria-label="Ranking harga komoditas"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ranking-section" data-title="Ranking">
+    <img class="food-sticker s-a" src="assets/images/food-sticker-17.png" alt="" aria-hidden="true" loading="lazy" />
+    <img class="food-sticker s-b sticker-bounce" src="assets/images/food-sticker-18.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-d" src="assets/images/food-sticker-19.png" alt="" aria-hidden="true" loading="lazy" />
+    <div class="story-grid">
+      <div class="copy reveal">
+        <div class="chapter">Bab 4 — Ranking Wilayah</div>
+        <h2>Provinsi berbeda, <em>beban berbeda</em></h2>
+        <p class="bodytext">Ranking wilayah mengubah peta menjadi urutan yang lebih mudah dibaca. Pilih komoditas untuk
+          melihat provinsi mana yang paling mahal atau paling murah pada komoditas tersebut.</p>
+        <p class="bodytext">Chart ini dipakai untuk menjaga interpretasi tetap spesifik: bukan semua wilayah “mahal”,
+          tetapi harga bergerak berbeda tergantung komoditas dan provinsi.</p>
+        <div class="insight">Lokasi membuat harga yang sama terasa berbeda. Ranking membantu melihat siapa yang berada
+          di ujung atas dan bawah.</div>
+      </div>
+      <div class="panel reveal panel--ranking">
+        <div class="panel-title">
+          <span>Ranking provinsi</span>
+          <div class="controls">
+            <select id="rankCommodity"></select>
+            <button id="top10Btn" class="active">Top 10</button>
+            <button id="allProvBtn">Semua</button>
+          </div>
+        </div>
+        <svg id="provinceBars" viewBox="0 0 780 520" role="img" aria-label="Ranking rata-rata harga provinsi"></svg>
+        <div class="chart-note">Bar diurutkan dari provinsi dengan rata-rata harga tertinggi ke terendah.</div>
+        <div class="color-threshold-note" id="rankingColorNote"></div>
+        <div class="ranking-interpretation" id="rankingInsight"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="gap-section" data-title="Rentang">
+    <img class="food-sticker s-a" src="assets/images/food-sticker-20.png" alt="" aria-hidden="true" loading="lazy" />
+    <img class="food-sticker s-b sticker-bounce" src="assets/images/food-sticker-21.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-d" src="assets/images/food-sticker-22.png" alt="" aria-hidden="true" loading="lazy" />
+    <div class="story-grid">
+      <div class="copy reveal">
+        <div class="chapter">Bab 5 — Inequality Gap</div>
+        <h2>Rata-rata menyembunyikan <em>jurang harga</em></h2>
+        <p class="bodytext">Dumbbell chart ini menampilkan harga rata-rata provinsi termurah dan termahal untuk tiap
+          komoditas. Panjang garis menunjukkan rentang ketimpangan antarprovinsi.</p>
+        <p class="bodytext">Ini bukan volatilitas waktu. Ini adalah <strong>disparitas antarwilayah</strong>: komoditas
+          yang sama dapat punya harga sangat berbeda, bahkan dalam tahun yang sama.</p>
+        <div class="insight">Konsumen tidak membayar harga rata-rata nasional. Mereka membayar harga lokal yang tersedia
+          di wilayahnya.</div>
+      </div>
+      <div class="panel reveal">
+        <div class="panel-title">
+          <span>Dumbbell min–maks antarprovinsi</span>
+          <div class="controls">
+            <select id="gapCommodity"></select>
+            <button id="gapAllBtn" class="active">Semua</button>
+          </div>
+        </div>
+        <svg id="dumbbellChart" viewBox="0 0 840 520" role="img"
+          aria-label="Dumbbell chart rentang harga antarprovinsi"></svg>
+        <div class="chart-note">Label kiri menunjukkan provinsi termurah, label kanan provinsi termahal. Garis merah
+          menandai rentang yang lebar.</div>
+        <div class="dynamic-interpretation" id="gapInsight"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="trend-section" data-title="Tren">
+    <img class="food-sticker s-a" src="assets/images/food-sticker-23.png" alt="" aria-hidden="true" loading="lazy" />
+    <img class="food-sticker s-b sticker-bounce" src="assets/images/food-sticker-24.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-c sticker-spin" src="assets/images/food-sticker-25.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <div class="story-grid">
+      <div class="copy reveal">
+        <div class="chapter">Bab 6 — Dinamika Waktu</div>
+        <h2>Ada yang stabil tinggi, ada yang <em>naik-turun</em></h2>
+        <p class="bodytext">Harga pangan tidak hanya berbeda antarwilayah, tetapi juga bergerak sepanjang tahun. Daging
+          sapi relatif stabil tetapi berada di level tinggi. Bawang merah lebih bergerak, sementara beras relatif rendah
+          dan stabil.</p>
+        <p class="bodytext">Gunakan filter untuk fokus pada satu komoditas, atau tampilkan semua untuk membandingkan
+          pola bergeraknya harga.</p>
+        <div class="insight">Beban pangan muncul dalam dua bentuk: harga yang terus tinggi dan harga yang sulit
+          diprediksi.</div>
+      </div>
+      <div class="panel reveal">
+        <div class="panel-title">
+          <span>Tren harga bulanan 2025</span>
+          <div class="controls">
+            <select id="trendCommodity"></select>
+            <button id="trendAllBtn" class="active">Semua</button>
+          </div>
+        </div>
+        <svg id="lineChart" viewBox="0 0 820 460" role="img" aria-label="Line chart tren bulanan"></svg>
+        <div class="chart-note">Sumbu Y otomatis mengikuti data yang tampil. Garis bisa difokuskan per komoditas.</div>
+        <div class="dynamic-interpretation" id="trendInsight"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="explore" data-title="Eksplorasi">
+    <img class="food-sticker s-a sticker-bounce" src="assets/images/food-sticker-26.png" alt="" aria-hidden="true"
+      loading="lazy" />
+    <img class="food-sticker s-b" src="assets/images/food-sticker-27.png" alt="" aria-hidden="true" loading="lazy" />
+    <img class="food-sticker s-c" src="assets/images/food-sticker-28.png" alt="" aria-hidden="true" loading="lazy" />
+    <img class="food-sticker s-d" src="assets/images/food-sticker-29.png" alt="" aria-hidden="true" loading="lazy" />
+    <div class="explorer">
+      <div class="copy reveal" style="position:static;max-width:900px">
+        <div class="chapter">Penutup — Martini Glass</div>
+        <h2>Setelah cerita, biarkan pembaca <em>menyelidiki sendiri</em></h2>
+        <p class="bodytext">Bagian terakhir mengubah visual story menjadi eksplorasi bebas. Pilih satu komoditas, lalu
+          semua visual ringkas akan berubah bersama. Ini menjaga cerita tetap author-driven di awal, tetapi memberi
+          ruang reader-driven di akhir.</p>
+      </div>
+      <div class="panel reveal explorer-wide">
+        <div class="panel-title">
+          <span>Explorer terpadu</span>
+          <div class="controls">
+            <select id="exploreCommodity"></select>
+            <button id="exploreIDR" class="explore-metric active" data-metric="price">IDR</button>
+            <button id="exploreUSD" class="explore-metric" data-metric="usd">USD</button>
+          </div>
+        </div>
+        <div class="kpi-grid" id="exploreKpi"></div>
+        <div class="dynamic-interpretation" id="exploreInsight"></div>
+      </div>
+      <div class="explorer-grid">
+        <div class="panel reveal">
+          <div class="panel-title"><span>Top provinsi</span></div><svg id="exploreRank" viewBox="0 0 620 360"></svg>
+        </div>
+        <div class="panel reveal">
+          <div class="panel-title"><span>Tren bulanan</span></div><svg id="exploreTrend" viewBox="0 0 620 360"></svg>
+        </div>
+      </div>
+      <div class="quote reveal">Pertanyaan tentang harga pangan tidak cukup berhenti pada <strong>“berapa
+          rata-ratanya?”</strong> Ia harus dilanjutkan dengan: <strong>siapa</strong> yang membayar lebih, <strong>di
+          mana</strong>, untuk <strong>makanan apa</strong>, dan <strong>kapan</strong>?</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>
+      <div class="smallcaps">Sumber data</div>
+      <div>FoodPrice.xlsx · Data harga pangan Indonesia 2025 · 13,011 observasi · 34 provinsi · 218 pasar · retail ·
+        IDR.</div>
+    </div>
+    <div style="max-width:520px">
+      <b>Catatan metodologi:</b> angka adalah rata-rata sederhana dari observasi yang tersedia. Rentang min–maks
+      dihitung dari rata-rata harga provinsi untuk setiap komoditas, bukan dari pendapatan atau konsumsi rumah tangga.
+    </div>
+  </footer>
+
+  <div class="tooltip" id="tooltip"></div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
