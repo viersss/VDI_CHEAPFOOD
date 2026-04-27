@@ -90,37 +90,40 @@
     <img class="food-sticker s-b sticker-bounce" src="assets/images/food-sticker-11.png" alt="" aria-hidden="true"
       loading="lazy" />
     <img class="food-sticker s-c" src="assets/images/food-sticker-12.png" alt="" aria-hidden="true" loading="lazy" />
-    <div class="story-grid">
-      <div class="copy reveal">
-        <div class="chapter">Bab 2 — Peta Harga</div>
-        <h2>Lokasi adalah bagian dari <em>harga</em></h2>
-        <p class="bodytext">Peta ini memperlihatkan rata-rata harga menurut provinsi. Pilih komoditas untuk melihat
-          bagaimana pola spasial berubah: harga <strong>daging sapi</strong>, <strong>bawang merah</strong>, atau
-          <strong>beras</strong> tidak membentuk beban yang sama di seluruh Indonesia.
-        </p>
-        <p class="bodytext">Hover pada provinsi untuk melihat angka detail. Provinsi pemekaran Papua yang tidak tersedia
-          di data harga akan ditampilkan sebagai wilayah tanpa data.</p>
-        <div class="insight">Pembeli tidak hidup di rata-rata nasional. Mereka membeli pangan di provinsi tertentu, di
-          pasar tertentu, dengan harga lokal.</div>
-      </div>
-      <div class="panel reveal panel--map">
-        <div class="panel-title">
-          <span>Peta choropleth rata-rata harga provinsi</span>
-          <div class="controls">
-            <select id="mapCommodity"></select>
-            <button id="metricIDR" class="metric-btn active" data-metric="price">IDR</button>
-            <button id="metricUSD" class="metric-btn" data-metric="usd">USD</button>
-          </div>
+    <div class="map-header reveal" style="max-width: 1280px; margin: 0 auto 32px;">
+      <div class="chapter">Bab 2 — Peta Harga</div>
+      <h2>Lokasi adalah bagian dari <em>harga</em></h2>
+    </div>
+
+    <div class="panel reveal panel--map" style="margin: 0 auto 40px; max-width: 100%; width: 100%;">
+      <div class="panel-title">
+        <span>Peta choropleth rata-rata harga provinsi</span>
+        <div class="controls">
+          <select id="mapCommodity"></select>
+          <button id="metricIDR" class="metric-btn active" data-metric="price">IDR</button>
+          <button id="metricUSD" class="metric-btn" data-metric="usd">USD</button>
         </div>
-        <div class="map-wrap map-wrap--fullbleed">
-          <svg id="mapSvg" viewBox="0 0 1000 480" preserveAspectRatio="xMidYMid meet" role="img"
-            aria-label="Peta harga pangan Indonesia"></svg>
-        </div>
-        <div class="legend-bar-wrap" id="mapLegend"></div>
-        <div class="chart-note">Catatan: warna lebih panas menunjukkan harga rata-rata lebih tinggi. Angka mengikuti
-          filter komoditas dan satuan yang dipilih.</div>
-        <div class="map-interpretation" id="mapInsight"></div>
       </div>
+      <div class="map-wrap map-wrap--fullbleed" style="width: 100%;">
+        <svg id="mapSvg" viewBox="0 0 1000 480" preserveAspectRatio="xMidYMid meet" role="img"
+          aria-label="Peta harga pangan Indonesia" style="width: 100%; height: auto; max-height: 75vh;"></svg>
+      </div>
+      <div class="legend-bar-wrap" id="mapLegend" style="max-width: 800px; margin: 16px auto 0;"></div>
+      <div class="chart-note" style="text-align: center; margin-top: 16px;">Catatan: warna lebih panas menunjukkan harga rata-rata lebih tinggi. Angka mengikuti filter komoditas dan satuan yang dipilih.</div>
+    </div>
+
+    <div class="map-interpretation-wrapper reveal" style="margin: 0 auto 40px; width: 100%;">
+      <div class="map-interpretation panel" id="mapInsight" style="padding: 32px 40px; border-radius: 24px; box-shadow: 0 12px 30px rgba(138, 88, 30, 0.1);"></div>
+    </div>
+
+    <div class="map-footer reveal" style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; text-align: center;">
+      <p class="bodytext" style="font-size: 20px;">Peta ini memperlihatkan rata-rata harga menurut provinsi. Pilih komoditas untuk melihat
+        bagaimana pola spasial berubah: harga <strong>daging sapi</strong>, <strong>bawang merah</strong>, atau
+        <strong>beras</strong> tidak membentuk beban yang sama di seluruh Indonesia.
+      </p>
+      <p class="bodytext" style="font-size: 20px;">Hover pada provinsi untuk melihat angka detail. Provinsi pemekaran Papua yang tidak tersedia
+        di data harga akan ditampilkan sebagai wilayah tanpa data.</p>
+      <div class="insight" style="margin-top: 0; text-align: left; max-width: 800px; margin-inline: auto;">Pembeli tidak hidup di rata-rata nasional. Mereka membeli pangan di provinsi tertentu, di pasar tertentu, dengan harga lokal.</div>
     </div>
   </section>
 
@@ -131,35 +134,43 @@
     <img class="food-sticker s-d sticker-spin" src="assets/images/food-sticker-15.png" alt="" aria-hidden="true"
       loading="lazy" />
     <img class="food-sticker s-e" src="assets/images/food-sticker-16.png" alt="" aria-hidden="true" loading="lazy" />
-    <div class="story-grid">
-      <div class="copy reveal">
+    <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 60px; align-items: start; max-width: 1280px; margin: 0 auto;">
+      <!-- Left Column: Charts -->
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="panel-title" style="margin-bottom: 0;"><span>Donut kategori + ranking komoditas</span><span id="structureMetricLabel">IDR/kg</span></div>
+        
+        <!-- Donut Chart Enlarged -->
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+          <svg id="donutChart" viewBox="0 0 420 440" role="img" aria-label="Donut rata-rata kategori pangan" style="width: 100%; max-width: 420px; height: auto; transform: scale(1.15); margin-top: 20px;"></svg>
+        </div>
+        
+        <!-- Bar Chart Below Donut -->
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 20px;">
+          <svg id="commodityBars" viewBox="0 0 620 440" role="img" aria-label="Ranking harga komoditas" style="width: 100%; height: auto;"></svg>
+        </div>
+      </div>
+
+      <!-- Right Column: Title, Description, and Interpretation -->
+      <div class="copy" style="display: flex; flex-direction: column; justify-content: start; gap: 16px;">
         <div class="chapter">Bab 3 — Struktur Harga</div>
-        <h2><em>Kenyang</em> lebih murah daripada bergizi</h2>
-        <p class="bodytext">Ketika harga dibaca menurut kategori, pangan pokok berada di lapisan termurah, sedangkan
+        <h2 style="margin-top: 0; margin-bottom: 8px;"><em>Kenyang</em> lebih murah daripada bergizi</h2>
+        <p class="bodytext" style="font-size: 20px; text-align: justify; margin-bottom: 0;">Ketika harga dibaca menurut kategori, pangan pokok berada di lapisan termurah, sedangkan
           kategori daging, ikan, dan telur berada jauh lebih tinggi. Ini tidak menghitung kandungan gizi langsung,
           tetapi cukup menunjukkan struktur harga: sumber protein hewani membutuhkan biaya lebih besar daripada serealia
           dan umbi.</p>
-        <p class="bodytext">Bagian ini menggabungkan dua chart Tableau: donut kategori dan ranking komoditas. Donut
+        <p class="bodytext" style="font-size: 20px; text-align: justify; margin-top: 8px;">Bagian ini menggabungkan dua chart Tableau: donut kategori dan ranking komoditas. Donut
           memberi gambaran komposisi rata-rata kategori, sementara bar chart memperlihatkan jarak antar komoditas secara
           lebih presisi.</p>
-        <div class="insight">Kenyang relatif lebih murah, tetapi sumber protein berada pada lapisan harga yang jauh
-          lebih tinggi.</div>
+        <div class="chart-note">Catatan: Donut memakai rata-rata harga kategori. Nilai tidak dimaksudkan sebagai proporsi pengeluaran rumah tangga.</div>
+        
+        <!-- Interpretation moved below description -->
+        <div class="dynamic-interpretation panel" id="structureInsight" style="padding: 32px 40px; border-radius: 24px; box-shadow: 0 12px 30px rgba(138, 88, 30, 0.1); margin-top: 16px; font-size: 1.1rem; line-height: 1.6; text-align: left;"></div>
       </div>
-      <div class="panel reveal">
-        <div class="panel-title"><span>Donut kategori + ranking komoditas</span><span
-            id="structureMetricLabel">IDR/kg</span></div>
-        <div class="dual-grid">
-          <div>
-            <svg id="donutChart" viewBox="0 0 420 440" role="img" aria-label="Donut rata-rata kategori pangan"></svg>
-            <div class="chart-note">Donut memakai rata-rata harga kategori. Nilai tidak dimaksudkan sebagai proporsi
-              pengeluaran rumah tangga.</div>
-            <div class="dynamic-interpretation" id="structureInsight"></div>
-          </div>
-          <div>
-            <svg id="commodityBars" viewBox="0 0 620 440" role="img" aria-label="Ranking harga komoditas"></svg>
-          </div>
-        </div>
-      </div>
+    </div>
+
+    <!-- Bottom: Insight Text -->
+    <div class="reveal" style="max-width: 1000px; margin: 40px auto 0; text-align: center;">
+      <div class="insight" style="margin-top: 0; text-align: center; max-width: 800px; margin-inline: auto;">Kenyang relatif lebih murah, tetapi sumber protein berada pada lapisan harga yang jauh lebih tinggi.</div>
     </div>
   </section>
 
