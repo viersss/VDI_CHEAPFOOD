@@ -190,8 +190,8 @@
         <div class="insight">Lokasi membuat harga yang sama terasa berbeda. Ranking membantu melihat siapa yang berada
           di ujung atas dan bawah.</div>
       </div>
-      <div class="panel reveal panel--ranking">
-        <div class="panel-title">
+      <div class="reveal panel--ranking" style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="panel-title" style="margin-bottom: 0;">
           <span>Ranking provinsi</span>
           <div class="controls">
             <select id="rankCommodity"></select>
@@ -202,8 +202,12 @@
         <svg id="provinceBars" viewBox="0 0 780 520" role="img" aria-label="Ranking rata-rata harga provinsi"></svg>
         <div class="chart-note">Bar diurutkan dari provinsi dengan rata-rata harga tertinggi ke terendah.</div>
         <div class="color-threshold-note" id="rankingColorNote"></div>
-        <div class="ranking-interpretation" id="rankingInsight"></div>
       </div>
+    </div>
+    
+    <!-- Interpretation moved outside the panel and placed at the bottom -->
+    <div class="ranking-interpretation-wrapper reveal" style="max-width: 1280px; margin: 40px auto 0;">
+      <div class="ranking-interpretation" id="rankingInsight" style="width: 100%;"></div>
     </div>
   </section>
 
@@ -223,8 +227,8 @@
         <div class="insight">Konsumen tidak membayar harga rata-rata nasional. Mereka membayar harga lokal yang tersedia
           di wilayahnya.</div>
       </div>
-      <div class="panel reveal">
-        <div class="panel-title">
+      <div class="reveal" style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="panel-title" style="margin-bottom: 0;">
           <span>Dumbbell min–maks antarprovinsi</span>
           <div class="controls">
             <select id="gapCommodity"></select>
@@ -235,7 +239,7 @@
           aria-label="Dumbbell chart rentang harga antarprovinsi"></svg>
         <div class="chart-note">Label kiri menunjukkan provinsi termurah, label kanan provinsi termahal. Garis merah
           menandai rentang yang lebar.</div>
-        <div class="dynamic-interpretation" id="gapInsight"></div>
+        <div class="dynamic-interpretation panel" id="gapInsight" style="padding: 24px 32px; border-radius: 20px; box-shadow: 0 8px 24px rgba(138, 88, 30, 0.08); margin-top: 16px; font-size: 1.05rem; line-height: 1.6;"></div>
       </div>
     </div>
   </section>
@@ -258,17 +262,17 @@
         <div class="insight">Beban pangan muncul dalam dua bentuk: harga yang terus tinggi dan harga yang sulit
           diprediksi.</div>
       </div>
-      <div class="panel reveal">
-        <div class="panel-title">
+      <div class="reveal" style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="panel-title" style="margin-bottom: 0;">
           <span>Tren harga bulanan 2025</span>
           <div class="controls">
             <select id="trendCommodity"></select>
             <button id="trendAllBtn" class="active">Semua</button>
           </div>
         </div>
-        <svg id="lineChart" viewBox="0 0 820 460" role="img" aria-label="Line chart tren bulanan"></svg>
+        <svg id="lineChart" viewBox="0 0 820 460" role="img" aria-label="Line chart tren bulanan" style="width: 100%; height: auto;"></svg>
         <div class="chart-note">Sumbu Y otomatis mengikuti data yang tampil. Garis bisa difokuskan per komoditas.</div>
-        <div class="dynamic-interpretation" id="trendInsight"></div>
+        <div class="dynamic-interpretation panel" id="trendInsight" style="padding: 24px 32px; border-radius: 20px; box-shadow: 0 8px 24px rgba(138, 88, 30, 0.08); margin-top: 16px; font-size: 1.05rem; line-height: 1.6;"></div>
       </div>
     </div>
   </section>
@@ -287,8 +291,8 @@
           semua visual ringkas akan berubah bersama. Ini menjaga cerita tetap author-driven di awal, tetapi memberi
           ruang reader-driven di akhir.</p>
       </div>
-      <div class="panel reveal explorer-wide">
-        <div class="panel-title">
+      <div class="reveal" style="display: flex; flex-direction: column; gap: 24px; width: 100%;">
+        <div class="panel-title" style="margin-bottom: 0;">
           <span>Explorer terpadu</span>
           <div class="controls">
             <select id="exploreCommodity"></select>
@@ -296,16 +300,21 @@
             <button id="exploreUSD" class="explore-metric" data-metric="usd">USD</button>
           </div>
         </div>
-        <div class="kpi-grid" id="exploreKpi"></div>
-        <div class="dynamic-interpretation" id="exploreInsight"></div>
-      </div>
-      <div class="explorer-grid">
-        <div class="panel reveal">
-          <div class="panel-title"><span>Top provinsi</span></div><svg id="exploreRank" viewBox="0 0 620 360"></svg>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; align-items: start;">
+          <!-- Left Column: Bar Chart Seamless -->
+          <div style="display: flex; flex-direction: column;">
+            <div class="panel-title" style="font-size: 0.9rem; margin-bottom: 12px; color: var(--muted); letter-spacing: 1px;">TOP PROVINSI</div>
+            <svg id="exploreRank" viewBox="0 0 620 400" style="width: 100%; height: auto;"></svg>
+          </div>
+          
+          <!-- Right Column: Detailed Interpretation -->
+          <div class="dynamic-interpretation panel" id="exploreInsight" style="padding: 32px 40px; border-radius: 24px; box-shadow: 0 12px 30px rgba(138, 88, 30, 0.1); display: flex; flex-direction: column; justify-content: center; min-height: 100%;"></div>
         </div>
-        <div class="panel reveal">
-          <div class="panel-title"><span>Tren bulanan</span></div><svg id="exploreTrend" viewBox="0 0 620 360"></svg>
-        </div>
+
+        <!-- Hidden elements -->
+        <div id="exploreKpi" style="display: none;"></div>
+        <svg id="exploreTrend" style="display: none;"></svg>
       </div>
       <div class="quote reveal">Pertanyaan tentang harga pangan tidak cukup berhenti pada <strong>“berapa
           rata-ratanya?”</strong> Ia harus dilanjutkan dengan: <strong>siapa</strong> yang membayar lebih, <strong>di
